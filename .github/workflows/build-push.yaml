@@ -21,8 +21,8 @@ jobs:
           password: ${{ secrets.TEST_ACTION_REPO_SECRET}}
 
       - name: Generate Tag
-      id: tag-prep
-      run: |
+        id: tag-prep
+        run: |
           sha=${GITHUB_SHA::8}
           ts=$(date +%s)
           echo "::set-output name=BUILD_ID::${ts}.${sha}" 
