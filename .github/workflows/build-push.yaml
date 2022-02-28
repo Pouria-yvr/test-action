@@ -4,14 +4,15 @@ on:
     branches:
       - main
 
-env: 
-  BUILD_HASH = 12345
-  BUILD_DATE_TIME = sh date +'%Y.%m.%d'
+
 
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    env: 
+      BUILD_HASH = 12345
+      BUILD_DATE_TIME = date +'%Y.%m.%d'
 
     steps:
       - name: Check out the repo
