@@ -6,7 +6,7 @@ on:
 
 env: 
   BUILD_HASH = 12345
-  BUILD_DATE_TIME = date +'%Y.%m.%d'
+  BUILD_DATE_TIME = sh date +'%Y.%m.%d'
 
 jobs:
   push_to_registry:
