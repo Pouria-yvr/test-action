@@ -4,6 +4,10 @@ on:
     branches:
       - main
 
+env: 
+  BUILD_HASH = 12345
+  BUILD_DATE_TIME = date +'%Y.%m.%d'
+
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -24,6 +28,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: ghcr.io/pouria-yvr/hello_world:latest
+          tags: ghcr.io/pouria-yvr/hello_world:$BUILD_DATE_TIME.$BUILD_HASH
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
