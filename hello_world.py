@@ -3,6 +3,6 @@ from time import sleep
 
 while True:
 	print("Hello, World")
-	print("changed acct name")
+	print("test")
 	sleep(1)
 
