@@ -23,8 +23,8 @@ jobs:
       - name: Generate Tag
         id: tag-prep
         run: |
-          sha=${GITHUB_SHA::8}
-          ts=$(date +'%Y.%m.%d)
+          sha=${GITHUB_SHA::7}
+          ts=$(date +'%Y.%m.%d')
           echo "::set-output name=BUILD_ID::${ts}.${sha}" 
       - name: Build image and push to GitHub Container Registry
         uses: docker/build-push-action@v2
