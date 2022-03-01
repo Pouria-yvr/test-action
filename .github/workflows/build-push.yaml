@@ -27,9 +27,17 @@ jobs:
           ts=$(date +'%Y.%m.%d')
           echo "::set-output name=BUILD_ID::${ts}.${sha}" 
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            ghrc.io/${{ github.repository_owner }}/ms-qloud:${{ steps.tag-prep.outputs.BUILD_ID }}
+
       - name: Build image and push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: ghcr.io/${{github.repository_owner}}/ms-qloud:${{ steps.tag-prep.outputs.BUILD_ID }}
-          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          push: true
+          
