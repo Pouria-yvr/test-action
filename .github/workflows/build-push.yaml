@@ -26,10 +26,10 @@ jobs:
           sha=${GITHUB_SHA::7}
           ts=$(date +'%Y.%m.%d')
           echo "::set-output name=BUILD_ID::${ts}.${sha}" 
+
       - name: Build image and push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: ghcr.io/pouria-yvr/hello_world:${{ steps.tag-prep.outputs.BUILD_ID }}
-          # build on feature branches, push only on main branch
+          tags: ghcr.io/${GITHUB_ACTOR}/ms-qloud:${{ steps.tag-prep.outputs.BUILD_ID }}
           push: ${{ github.ref == 'refs/heads/main' }}
