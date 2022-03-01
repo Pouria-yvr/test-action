@@ -31,5 +31,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: ghcr.io/${GITHUB_ACTOR}/ms-qloud:${{ steps.tag-prep.outputs.BUILD_ID }}
+          tags: ghcr.io/$GITHUB_ACTOR/ms-qloud:${{ steps.tag-prep.outputs.BUILD_ID }}
           push: ${{ github.ref == 'refs/heads/main' }}
