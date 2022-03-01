@@ -2,7 +2,7 @@ name: push-image
 on:
   push:
     branches:
-      - main
+      - test-branch
 
 jobs:
   push_to_registry:
