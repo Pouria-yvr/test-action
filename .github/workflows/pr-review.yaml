@@ -12,6 +12,7 @@ jobs:
 
       - name: print
         run: pwd
+        run: ls
 
       - name: Build the image
         run: docker-compose build --compress --force-rm
