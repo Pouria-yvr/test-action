@@ -1,0 +1,14 @@
+name: Pull Request Workflow
+on: pull_request
+
+jobs:
+  run_tests:
+    name: Run tests after pull request is created or updated
+    runs-on: ubuntu-lat 
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - run: python -m unittest tests/test.py
+          
