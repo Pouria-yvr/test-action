@@ -10,17 +10,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: print
-        run: |
-          pwd
-          ls
-
       - name: Build the image
-        run: docker-compose build --compress --force-rm
+        run: docker build --compress --force-rm
 
-      - name: Run the container
-        run: docker-compose up -d
-
-      - name: Run the tests
-        run: python -m unittest tests/test.py
+      - name: Run the container and tests
+        run: docker run --rm --user=root test-action bash -c "python -m unittest tests/test.py"
           
