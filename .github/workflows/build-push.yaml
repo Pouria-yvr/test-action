@@ -1,9 +1,9 @@
 name: push-image
-# on:
-#   push:
-#     branches:
-#       - test-branch
-on: workflow_dispatch
+on:
+  - push:
+      branches:
+        - test-branch
+  - workflow_dispatch
 
 jobs:
   push_to_registry:
