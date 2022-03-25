@@ -1,5 +1,6 @@
 name: Pull Request Workflow
-on: pull_request
+# on: pull_request
+on: workflow_dispatch
 
 jobs:
   run_tests:
