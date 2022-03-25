@@ -1,0 +1,19 @@
+name: Pull Request Workflow
+# on: pull_request
+on: workflow_dispatch
+
+jobs:
+  run_tests:
+    name: Run tests after pull request is created or updated
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Build the image
+        run: docker build --compress --force-rm -t test-action .
+
+      - name: Run the container and tests
+        run: docker run --rm --user=root test-action bash -c "python -m unittest tests/test.py"
+          
